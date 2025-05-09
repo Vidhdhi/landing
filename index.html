@@ -4,14 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ceylon Explore Car Rental Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* General Styles */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #e0eafc, #cfdef3);
+      background: linear-gradient(to right, #e3ffe7, #d9e7ff);
       color: #333;
       overflow-x: hidden;
+      scroll-behavior: smooth;
     }
+    h1, h2, h3 {
+      margin: 0;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 10px;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Header Section */
     header {
       display: flex;
       flex-direction: column;
@@ -20,43 +37,64 @@
       height: 100vh;
       text-align: center;
       padding: 20px;
+      background: linear-gradient(120deg, #1a2a6c, #b21f1f, #fdbb2d);
+      color: white;
+      clip-path: ellipse(75% 80% at center top);
     }
     header img {
-      max-width: 90%;
+      width: 250px;
       height: auto;
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
       margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
     h1 {
-      font-size: 3rem;
-      margin: 10px 0;
-      background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
-      -webkit-background-clip: text;
-      color: transparent;
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     p {
       font-size: 1.2rem;
       max-width: 600px;
+      margin: 10px auto;
+      line-height: 1.6;
     }
     .whatsapp-btn {
       display: inline-block;
       margin-top: 20px;
-      padding: 12px 24px;
+      padding: 15px 30px;
       background: #25D366;
       color: white;
       font-size: 1.2rem;
+      font-weight: 600;
       border-radius: 50px;
       text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
     }
     .whatsapp-btn:hover {
-      transform: scale(1.05);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     }
+
+    /* Section Styles */
     section {
       padding: 60px 20px;
       text-align: center;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #1a2a6c, #b21f1f);
+      margin: 10px auto;
     }
     .cars {
       display: grid;
@@ -67,20 +105,22 @@
     .car-card {
       background: white;
       border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .car-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
     .car-card img {
-      width: 100%;
       height: 200px;
       object-fit: cover;
     }
     .car-card h3 {
+      font-size: 1.5rem;
       margin: 10px 0;
+      color: #1a2a6c;
     }
     .pricing {
       display: flex;
@@ -93,17 +133,31 @@
       background: white;
       padding: 20px;
       border-radius: 15px;
-      width: 250px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      width: 300px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .price-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
     .price-card h2 {
       margin-bottom: 10px;
       color: #b21f1f;
+      font-size: 2rem;
     }
+
+    /* Contact Section */
+    section.contact {
+      background: linear-gradient(120deg, #f6d365, #fda085);
+      color: white;
+    }
+    section.contact p {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
@@ -112,13 +166,34 @@
       margin-top: 50px;
       font-size: 0.9rem;
     }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        height: auto;
+        padding: 40px 20px;
+      }
+      header h1 {
+        font-size: 2.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .whatsapp-btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+      .price-card {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="your-wagonr-image.jpg" alt="Suzuki Wagon R 2020">
-  <h1>Ceylon Explore Car Rental Services</h1>
+  <img src="./Clogo.png" alt="Suzuki Wagon R 2020">
+  <h1>Ceylon Explore</h1>
   <p>Reliable. Affordable. Convenient. Drive your journey with us!</p>
   <a class="whatsapp-btn" href="https://wa.me/94774833375" target="_blank">Chat with us on WhatsApp</a>
 </header>
@@ -128,7 +203,7 @@
   <div class="cars">
     <div class="car-card">
       <img src="./wegonr.jpg" alt="Suzuki WagonR">
-      <h3>Suzuki WagonR </h3>
+      <h3>Suzuki WagonR</h3>
       <p>Comfortable and fuel-efficient for city rides and tours.</p>
     </div>
     <div class="car-card">
@@ -161,7 +236,7 @@
   </div>
 </section>
 
-<section>
+<section class="contact">
   <h2>Contact Us</h2>
   <p>Call us: <strong>077 483 3375 / 077 231 3091</strong></p>
   <a class="whatsapp-btn" href="https://wa.me/94774833375" target="_blank">Send a WhatsApp Message</a>
