@@ -33,7 +33,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: start;
       height: 100vh;
       text-align: center;
       padding: 20px;
@@ -45,7 +45,7 @@
       width: 250px;
       height: auto;
       margin-bottom: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    
       animation: fadeIn 2s ease-in-out;
     }
     h1 {
@@ -105,6 +105,11 @@
       margin-top: 30px;
     }
     .car-card {
+      display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
       background: white;
       border-radius: 15px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -128,10 +133,10 @@
 
     /* About Us Section */
     .about {
-      background: #f9f9f9;
+    
       padding: 40px 20px;
       border-radius: 10px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+   
       animation: fadeIn 1.5s ease-in-out;
     }
     .about p {
@@ -230,10 +235,10 @@
   <h2>Reviews</h2>
   <div class="reviews">
     <div class="review-card">
-      <p>"Amazing service! The car was in perfect condition and the process was seamless." - John D.</p>
+      <p>"Amazing service! The car was in perfect condition and the process was seamless." -Suresh.</p>
     </div>
     <div class="review-card">
-      <p>"Great rates and excellent customer care. Highly recommended!" - Sarah W.</p>
+      <p>"Great rates and excellent customer care. Highly recommended!" - Mathusan.</p>
     </div>
   </div>
 </section>
@@ -244,8 +249,19 @@
   <a class="whatsapp-btn" href="https://wa.me/94774833375" target="_blank">Send a WhatsApp Message</a>
 </section>
 
-<footer>
-  © 2025 Ceylon Explore Car Rental Services. All rights reserved.
+<footer style="background: #1a2a6c; color: #fff; text-align: center; padding: 20px 10px; font-size: 0.9rem; margin-top: 50px;">
+  <div style="max-width: 1200px; margin: auto;">
+    <p style="margin: 0;">&copy; 2025 <strong>Ceylon Explore Car Rental Services</strong>. All rights reserved.</p>
+    <p style="margin: 8px 0 0;">Made with ❤️ in Sri Lanka</p>
+    <div style="margin-top: 10px;">
+      <a href="https://wa.me/94774833375" target="_blank" style="color: #25D366; text-decoration: none; font-weight: bold; margin: 0 10px;">
+        WhatsApp Us
+      </a> | 
+      <a href="tel:+94774833375" style="color: #fdbb2d; text-decoration: none; font-weight: bold; margin: 0 10px;">
+        Call Now
+      </a>
+    </div>
+  </div>
 </footer>
 
 </body>
