@@ -46,6 +46,7 @@
       height: auto;
       margin-bottom: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 2s ease-in-out;
     }
     h1 {
       font-size: 3.5rem;
@@ -97,9 +98,10 @@
       margin: 10px auto;
     }
     .cars {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      display: flex;
+      justify-content: center;
       gap: 20px;
+      flex-wrap: wrap;
       margin-top: 30px;
     }
     .car-card {
@@ -108,6 +110,7 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slideIn 1s ease-in-out;
     }
     .car-card:hover {
       transform: translateY(-10px);
@@ -122,69 +125,71 @@
       margin: 10px 0;
       color: #1a2a6c;
     }
-    .pricing {
+
+    /* About Us Section */
+    .about {
+      background: #f9f9f9;
+      padding: 40px 20px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .about p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    /* Reviews Section */
+    .reviews {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
+      flex-wrap: wrap;
       margin-top: 30px;
     }
-    .price-card {
+    .review-card {
       background: white;
       padding: 20px;
       border-radius: 15px;
       width: 300px;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1s ease-in-out;
     }
-    .price-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-    .price-card h2 {
-      margin-bottom: 10px;
-      color: #b21f1f;
-      font-size: 2rem;
+    .review-card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: left;
     }
 
-    /* Contact Section */
-    section.contact {
-      background: linear-gradient(120deg, #f6d365, #fda085);
-      color: white;
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
-    section.contact p {
-      font-size: 1.2rem;
-      font-weight: 500;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #1a2a6c;
-      color: white;
-      margin-top: 50px;
-      font-size: 0.9rem;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      header {
-        height: auto;
-        padding: 40px 20px;
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
       }
-      header h1 {
-        font-size: 2.5rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-      .whatsapp-btn {
-        font-size: 1rem;
-        padding: 10px 20px;
-      }
-      .price-card {
-        width: 100%;
+      to {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
   </style>
@@ -215,23 +220,20 @@
 </section>
 
 <section>
-  <h2>Pricing</h2>
-  <div class="pricing">
-    <div class="price-card">
-      <h2>Rs. 8,000/day</h2>
-      <p>120 km limit</p>
+  <h2>About Us</h2>
+  <div class="about">
+    <p>Welcome to Ceylon Explore! We are committed to providing reliable, affordable, and high-quality car rental services. Experience the joy of exploring with the best vehicles and exceptional customer service.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Reviews</h2>
+  <div class="reviews">
+    <div class="review-card">
+      <p>"Amazing service! The car was in perfect condition and the process was seamless." - John D.</p>
     </div>
-    <div class="price-card">
-      <h2>Rs. 10,000/day</h2>
-      <p>150 km limit</p>
-    </div>
-    <div class="price-card">
-      <h2>Rs. 18,000/day</h2>
-      <p>Unlimited km</p>
-    </div>
-    <div class="price-card">
-      <h2>Rs. 45,000</h2>
-      <p>Jaffna – Katunayake Two Way</p>
+    <div class="review-card">
+      <p>"Great rates and excellent customer care. Highly recommended!" - Sarah W.</p>
     </div>
   </div>
 </section>
