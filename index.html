@@ -3,265 +3,984 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ceylon Explore Car Rental Services</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Ceylon Explore - Premium Car Rental & Tours</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <style>
-    /* General Styles */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #e3ffe7, #d9e7ff);
-      color: #333;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    h1, h2, h3 {
-      margin: 0;
-    }
-    img {
-      max-width: 100%;
-      display: block;
-      border-radius: 10px;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
+    :root {
+      --primary-black: #0a0a0a;
+      --secondary-black: #1a1a1a;
+      --accent-red: #ff0038;
+      --dark-red: #cc0029;
+      --electric-blue: #00d4ff;
+      --gold: #ffd700;
+      --white: #ffffff;
+      --light-gray: #f0f0f0;
+      --dark-gray: #333333;
     }
 
-    /* Header Section */
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      height: 100vh;
-      text-align: center;
-      padding: 20px;
-      background: linear-gradient(120deg, #1a2a6c, #b21f1f, #fdbb2d);
-      color: white;
-      clip-path: ellipse(75% 80% at center top);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    header img {
-      width: 250px;
-      height: auto;
-      margin-bottom: 20px;
-    
-      animation: fadeIn 2s ease-in-out;
-    }
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-    p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 10px auto;
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--primary-black);
+      color: var(--white);
+      overflow-x: hidden;
       line-height: 1.6;
     }
-    .whatsapp-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 30px;
-      background: #25D366;
-      color: white;
-      font-size: 1.2rem;
-      font-weight: 600;
-      border-radius: 50px;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    /* Particles Background */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 50px;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
       transition: all 0.3s ease;
     }
-    .whatsapp-btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    /* Section Styles */
-    section {
-      padding: 60px 20px;
-      text-align: center;
+    .logo {
+      font-family: 'Orbitron', monospace;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--accent-red);
+      text-shadow: 0 0 20px var(--accent-red);
     }
-    section h2 {
-      font-size: 2.5rem;
-      font-weight: 600;
-      margin-bottom: 20px;
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
       position: relative;
     }
-    section h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, #1a2a6c, #b21f1f);
-      margin: 10px auto;
-    }
-    .cars {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .car-card {
-      display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: slideIn 1s ease-in-out;
-    }
-    .car-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-    .car-card img {
-      height: 200px;
-      object-fit: cover;
-    }
-    .car-card h3 {
-      font-size: 1.5rem;
-      margin: 10px 0;
-      color: #1a2a6c;
+
+    .nav-links a:hover {
+      color: var(--accent-red);
     }
 
-    /* About Us Section */
-    .about {
-    
-      padding: 40px 20px;
-      border-radius: 10px;
-   
-      animation: fadeIn 1.5s ease-in-out;
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--accent-red);
+      transition: width 0.3s ease;
     }
-    .about p {
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(255, 0, 56, 0.1), rgba(0, 212, 255, 0.1));
+    }
+
+    .hero-content h1 {
+      font-family: 'Orbitron', monospace;
+      font-size: 4.5rem;
+      font-weight: 900;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, var(--accent-red), var(--electric-blue), var(--gold));
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(255, 0, 56, 0.5);
+    }
+
+    .hero-content .subtitle {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: var(--light-gray);
+      font-weight: 300;
+    }
+
+    .hero-content .tagline {
       font-size: 1.2rem;
-      line-height: 1.8;
+      margin-bottom: 40px;
+      color: var(--electric-blue);
+      font-weight: 400;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 35px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, var(--accent-red), var(--dark-red));
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(255, 0, 56, 0.3);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--electric-blue);
+      border: 2px solid var(--electric-blue);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(255, 0, 56, 0.4);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 100px 50px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--accent-red);
+      position: relative;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--light-gray);
+      margin-bottom: 60px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, var(--secondary-black), var(--dark-gray));
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      border: 1px solid rgba(255, 0, 56, 0.1);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-red), var(--electric-blue), var(--gold));
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(255, 0, 56, 0.2);
+      border-color: var(--accent-red);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: var(--accent-red);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1);
+      color: var(--electric-blue);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .service-card p {
+      color: var(--light-gray);
+      line-height: 1.6;
+    }
+
+    /* Vehicle Fleet */
+    .fleet {
+      padding: 100px 50px;
+      background: linear-gradient(135deg, var(--secondary-black), var(--primary-black));
+    }
+
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .vehicle-card {
+      background: var(--secondary-black);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 0, 56, 0.1);
+    }
+
+    .vehicle-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 50px rgba(255, 0, 56, 0.2);
+    }
+
+    .vehicle-image {
+      height: 250px;
+      background: linear-gradient(45deg, var(--dark-gray), var(--secondary-black));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vehicle-image i {
+      font-size: 4rem;
+      color: var(--accent-red);
+    }
+
+    .vehicle-info {
+      padding: 30px;
+    }
+
+    .vehicle-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .vehicle-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    .feature-tag {
+      background: var(--accent-red);
+      color: var(--white);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Stats Section */
+    .stats {
+      padding: 80px 50px;
+      background: var(--accent-red);
+      color: var(--white);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-family: 'Orbitron', monospace;
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .stat-item p {
+      font-size: 1.2rem;
+      font-weight: 500;
     }
 
     /* Reviews Section */
     .reviews {
+      padding: 100px 50px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .review-card {
+      background: var(--secondary-black);
+      padding: 30px;
+      border-radius: 20px;
+      border-left: 4px solid var(--accent-red);
+      transition: all 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(255, 0, 56, 0.1);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+
+    .review-text {
+      font-style: italic;
+      margin-bottom: 20px;
+      color: var(--light-gray);
+      line-height: 1.6;
+    }
+
+    .reviewer {
+      font-weight: 600;
+      color: var(--accent-red);
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 100px 50px;
+      background: linear-gradient(135deg, var(--secondary-black), var(--primary-black));
+      text-align: center;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin: 60px 0;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-item {
+      background: var(--secondary-black);
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 0, 56, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent-red);
+      transform: translateY(-5px);
+    }
+
+    .contact-item i {
+      font-size: 2rem;
+      color: var(--accent-red);
+      margin-bottom: 15px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-black);
+      padding: 50px;
+      border-top: 1px solid rgba(255, 0, 56, 0.2);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-links {
       display: flex;
       justify-content: center;
       gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-    .review-card {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
-      width: 300px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      animation: fadeInUp 1s ease-in-out;
-    }
-    .review-card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      text-align: left;
+      margin: 30px 0;
     }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
+    .social-links a {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background: var(--accent-red);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 20px rgba(255, 0, 56, 0.3);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
       }
-      to {
-        opacity: 1;
-        transform: scale(1);
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .services-grid,
+      .fleet-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      nav {
+        padding: 15px 20px;
+      }
+      
+      .services,
+      .fleet,
+      .reviews,
+      .contact {
+        padding: 60px 20px;
       }
     }
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+
+    /* Loading Animation */
+    .loading-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--primary-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
     }
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 3px solid rgba(255, 0, 56, 0.3);
+      border-top: 3px solid var(--accent-red);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Glitch Effect */
+    .glitch {
+      animation: glitch 2s infinite;
+    }
+
+    @keyframes glitch {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-2px); }
+      40% { transform: translateX(2px); }
+      60% { transform: translateX(-2px); }
+      80% { transform: translateX(2px); }
+    }
+
+    /* Pulsing Elements */
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
     }
   </style>
 </head>
 <body>
-
-<header>
-  <img src="./Clogo.png" alt="Suzuki Wagon R 2020">
-  <h1>Ceylon Explore</h1>
-  <p>Reliable. Affordable. Convenient. Drive your journey with us!</p>
-  <a class="whatsapp-btn" href="https://wa.me/94774833375" target="_blank">Chat with us on WhatsApp</a>
-</header>
-
-<section>
-  <h2>Our Cars</h2>
-  <div class="cars">
-    <div class="car-card">
-      <img src="./wegonr.jpg" alt="Suzuki WagonR">
-      <h3>Suzuki WagonR</h3>
-      <p>Comfortable and fuel-efficient for city rides and tours.</p>
-    </div>
-    <div class="car-card">
-      <img src="./aqua.jpg" alt="Toyota Aqua">
-      <h3>Toyota Aqua</h3>
-      <p>Hybrid technology for smooth and eco-friendly travel.</p>
-    </div>
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading">
+    <div class="loading-spinner"></div>
   </div>
-</section>
 
-<section>
-  <h2>About Us</h2>
-  <div class="about">
-    <p>Welcome to Ceylon Explore! We are committed to providing reliable, affordable, and high-quality car rental services. Experience the joy of exploring with the best vehicles and exceptional customer service.</p>
-  </div>
-</section>
+  <!-- Particles Background -->
+  <div id="particles-js"></div>
 
-<section>
-  <h2>Reviews</h2>
-  <div class="reviews">
-    <div class="review-card">
-      <p>"Amazing service! The car was in perfect condition and the process was seamless." -Suresh.</p>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-content">
+      <div class="logo glitch">CEYLON EXPLORE</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#fleet">Fleet</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-    <div class="review-card">
-      <p>"Great rates and excellent customer care. Highly recommended!" - Mathusan.</p>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+      <h1 class="glitch">CEYLON EXPLORE</h1>
+      <p class="subtitle">Premium Car Rental & Tour Services</p>
+      <p class="tagline">Self Drive • Wedding Cars • Island Tours • Luxury Transport</p>
+      <div class="cta-buttons">
+        <a href="https://wa.me/94774833375" class="btn btn-primary" target="_blank">
+          <i class="fab fa-whatsapp"></i> Book Now
+        </a>
+        <a href="#services" class="btn btn-secondary">
+          <i class="fas fa-car"></i> View Services
+        </a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="contact">
-  <h2>Contact Us</h2>
-  <p>Call us: <strong>077 483 3375 / 077 231 3091</strong></p>
-  <a class="whatsapp-btn" href="https://wa.me/94774833375" target="_blank">Send a WhatsApp Message</a>
-</section>
+  <!-- Services Section -->
+  <section class="services" id="services">
+    <div data-aos="fade-up">
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-subtitle">Complete transportation solutions for every journey</p>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-icon pulse">
+          <i class="fas fa-car"></i>
+        </div>
+        <h3>Self Drive Cars</h3>
+        <p>Modern, well-maintained vehicles perfect for independent exploration. Enjoy the freedom to travel at your own pace across beautiful Sri Lanka.</p>
+      </div>
+      
+      <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-icon pulse">
+          <i class="fas fa-heart"></i>
+        </div>
+        <h3>Wedding Car Hire</h3>
+        <p>Make your special day unforgettable with our luxury wedding car collection. Elegant vehicles with professional decoration for your perfect moment.</p>
+      </div>
+      
+      <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-icon pulse">
+          <i class="fas fa-map-marked-alt"></i>
+        </div>
+        <h3>Island Tours</h3>
+        <p>Discover Sri Lanka's hidden gems with our comprehensive tour packages. From ancient ruins to pristine beaches, we cover it all.</p>
+      </div>
+      
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-icon pulse">
+          <i class="fas fa-bus"></i>
+        </div>
+        <h3>Van & Bus Rental</h3>
+        <p>Group transportation made easy. Spacious and comfortable vehicles for family trips, corporate events, and large group excursions.</p>
+      </div>
+    </div>
+  </section>
 
-<footer style="background: #1a2a6c; color: #fff; padding: 30px 20px; font-size: 0.9rem; display: flex; flex-direction: column; align-items: center; text-align: center;">
-  <p style="margin: 0;">&copy; 2025 <strong>Ceylon Explore Car Rental Services</strong>. All rights reserved.</p>
-  <p style="margin: 8px 0 0;">Made with ❤️ in Jaffna</p>
-  <div style="margin-top: 10px; display: flex; gap: 20px;">
-    <a href="https://wa.me/94774833375" target="_blank" style="color: #25D366; text-decoration: none; font-weight: bold;">
-      WhatsApp Us
-    </a>
-    <a href="tel:+94774833375" style="color: #fdbb2d; text-decoration: none; font-weight: bold;">
-      Call Now
-    </a>
-  </div>
-</footer>
+  <!-- Vehicle Fleet -->
+  <section class="fleet" id="fleet">
+    <div data-aos="fade-up">
+      <h2 class="section-title">Our Premium Fleet</h2>
+      <p class="section-subtitle">Choose from our collection of top-quality vehicles</p>
+    </div>
+    
+    <div class="fleet-grid">
+      <div class="vehicle-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="vehicle-image">
+          <i class="fas fa-car"></i>
+        </div>
+        <div class="vehicle-info">
+          <h3>Suzuki WagonR</h3>
+          <p>Perfect for city drives and short tours. Fuel-efficient and comfortable with modern features.</p>
+          <div class="vehicle-features">
+            <span class="feature-tag">AC</span>
+            <span class="feature-tag">4 Seats</span>
+            <span class="feature-tag">Manual</span>
+            <span class="feature-tag">GPS</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="vehicle-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="vehicle-image">
+          <i class="fas fa-leaf"></i>
+        </div>
+        <div class="vehicle-info">
+          <h3>Toyota Aqua</h3>
+          <p>Hybrid technology for eco-friendly travel. Smooth performance with excellent fuel economy.</p>
+          <div class="vehicle-features">
+            <span class="feature-tag">Hybrid</span>
+            <span class="feature-tag">5 Seats</span>
+            <span class="feature-tag">Auto</span>
+            <span class="feature-tag">Eco Mode</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="vehicle-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="vehicle-image">
+          <i class="fas fa-bus"></i>
+        </div>
+        <div class="vehicle-info">
+          <h3>Luxury Vans</h3>
+          <p>Spacious and comfortable for group travel. Perfect for family tours and corporate events.</p>
+          <div class="vehicle-features">
+            <span class="feature-tag">8+ Seats</span>
+            <span class="feature-tag">AC</span>
+            <span class="feature-tag">Luggage Space</span>
+            <span class="feature-tag">Sound System</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="vehicle-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="vehicle-image">
+          <i class="fas fa-crown"></i>
+        </div>
+        <div class="vehicle-info">
+          <h3>Wedding Cars</h3>
+          <p>Elegant vehicles specially prepared for your special day. Professional decoration included.</p>
+          <div class="vehicle-features">
+            <span class="feature-tag">Luxury</span>
+            <span class="feature-tag">Decorated</span>
+            <span class="feature-tag">Chauffeur</span>
+            <span class="feature-tag">Premium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="counter" data-count="500">0</h3>
+        <p>Happy Customers</p>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="counter" data-count="50">0</h3>
+        <p>Premium Vehicles</p>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="counter" data-count="1000">0</h3>
+        <p>Tours Completed</p>
+      </div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="counter" data-count="5">0</h3>
+        <p>Years Experience</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews" id="reviews">
+    <div data-aos="fade-up">
+      <h2 class="section-title">Client Reviews</h2>
+      <p class="section-subtitle">What our customers say about us</p>
+    </div>
+    
+    <div class="reviews-grid">
+      <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Exceptional service! The car was in perfect condition and the booking process was seamless. Highly recommended for anyone visiting Sri Lanka!"</p>
+        <p class="reviewer">- Suresh K.</p>
+      </div>
+      
+      <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Amazing rates and excellent customer service. The team went above and beyond to ensure our wedding day was perfect. Thank you!"</p>
+        <p class="reviewer">- Mathusan R.</p>
+      </div>
+      
+      <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Professional service with well-maintained vehicles. Our island tour was unforgettable thanks to Ceylon Explore. Will definitely use again!"</p>
+        <p class="reviewer">- Sarah M.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div data-aos="fade-up">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">Ready to start your journey? Contact us today!</p>
+    </div>
+    
+    <div class="contact-info">
+      <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-phone"></i>
+        <h3>Call Us</h3>
+        <p>077 483 3375<br>077 231 3091</p>
+      </div>
+      
+      <div class="contact-item" data-aos="fade-up" data-aos-delay="200">
+        <i class="fab fa-whatsapp"></i>
+        <h3>WhatsApp</h3>
+        <p>Quick responses and<br>instant booking</p>
+      </div>
+      
+      <div class="contact-item" data-aos="fade-up" data-aos-delay="300">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Location</h3>
+        <p>Jaffna, Northern Province<br>Sri Lanka</p>
+      </div>
+    </div>
+    
+    <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+      <a href="https://wa.me/94774833375" class="btn btn-primary" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
+      </a>
+      <a href="tel:+94774833375" class="btn btn-secondary">
+        <i class="fas fa-phone"></i> Call Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="logo glitch" style="font-size: 2rem; margin-bottom: 20px;">CEYLON EXPLORE</div>
+      <p>Premium car rental and tour services across beautiful Sri Lanka</p>
+      
+      <div class="social-links">
+        <a href="https://wa.me/94774833375" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+94774833375"><i class="fas fa-phone"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+      
+      <p>&copy; 2025 <strong>Ceylon Explore</strong>. All rights reserved.</p>
+      <p>Made with ❤️ in Jaffna, Sri Lanka</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+  
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+
+    // Loading Screen
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('loading').style.opacity = '0';
+        setTimeout(function() {
+          document.getElementById('loading').style.display = 'none';
+        }, 500);
+      }, 1000);
+    });
+
+    // Particles Configuration
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 }
 
 
+                 },
+        color: { value: "#ff0038" },
+        shape: {
+          type: "circle",
+          stroke: { width: 0, color: "#000000" },
+          polygon: { nb_sides: 5 }
+        },
+        opacity: {
+          value: 0.5,
+          random: false,
+          anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#ff0038",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 6,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+          attract: { enable: false, rotateX: 600, rotateY: 1200 }
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "repulse" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 400, line_linked: { opacity: 1 } },
+          bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+          repulse: { distance: 200, duration: 0.4 },
+          push: { particles_nb: 4 },
+          remove: { particles_nb: 2 }
+        }
+      },
+      retina_detect: true
+    });
+
+    // Counter Animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+        
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          counter.textContent = Math.floor(current);
+        }, 16);
+      });
+    }
+
+    // Trigger counter animation when stats section is in view
+    const statsSection = document.querySelector('.stats');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    observer.observe(statsSection);
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Navigation background on scroll
+    window.addEventListener('scroll', function() {
+      const nav = document.querySelector('nav');
+      if (window.scrollY > 50) {
+        nav.style.background = 'rgba(10, 10, 10, 0.98)';
+      } else {
+        nav.style.background = 'rgba(10, 10, 10, 0.95)';
+      }
+    });
+
+    // Random glitch effect
+    setInterval(() => {
+      const glitchElements = document.querySelectorAll('.glitch');
+      glitchElements.forEach(element => {
+        if (Math.random() > 0.7) {
+          element.style.animation = 'none';
+          setTimeout(() => {
+            element.style.animation = 'glitch 2s infinite';
+          }, 100);
+        }
+      });
+    }, 5000);
+  </script>
 </body>
 </html>
